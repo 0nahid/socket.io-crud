@@ -7,6 +7,7 @@ const app: Application = express();
 /* middleware  */
 app.use(cors());
 app.use(express.json());
+app.use('/uploads', express.static('uploads'));
 
 /* here will be all the imports routes */
 
