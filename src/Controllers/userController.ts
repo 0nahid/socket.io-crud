@@ -64,9 +64,26 @@ export const deleteUser = async (req: Request, res: Response) => {
   }
 };
 
+// upload image
+const uploadProductImage = async (req: Request, res: Response) => {
+  try {
+    res.status(200).json({
+      status: "success",
+      message: "Image uploaded",
+      data: req.files,
+    });
+  } catch (error) {
+    res.status(400).json({
+      status: "fail",
+      message: error,
+    });
+  }
+};
+
 export const userRouter = {
   getUser,
   createUser,
   updateUser,
   deleteUser,
+  uploadProductImage,
 };
