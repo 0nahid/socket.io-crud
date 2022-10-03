@@ -3,7 +3,7 @@ import { User } from "../Models/Users";
 
 export const getUser = async (req: Request, res: Response) => {
   try {
-    const users = await User.find();
+    const users = await User.find().select("-__v");
     res.status(200).json({
       status: "success",
       data: users,

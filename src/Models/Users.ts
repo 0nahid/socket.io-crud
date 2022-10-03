@@ -16,14 +16,21 @@ const UserSchema = new Schema({
       validator: (value: string) => validator.isEmail(value),
       message: "Invalid email address",
     },
-    imageUrls: {
-      type: [String],
-      required: true,
-      trim: true,
-      validate: {
-        validator: (value: string) => validator.isURL(value),
-        message: "Invalid URL",
+  },
+  imageUrls: {
+    type: [String],
+    // required: true,
+    validate: {
+      // get the value of the imageUrls field by loop and validate it using validator.isURL
+      validator: function (v: string[]) {
+        for (let i = 0; i < v.length; i++) {
+          if (!validator.isURL(v[i])) {
+            return false;
+          }
+        }
+        return true;
       },
+      message: "Please provide a valid image URL",
     },
   },
 });
