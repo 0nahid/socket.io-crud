@@ -1,3 +1,4 @@
+import colors from "colors";
 import "dotenv/config";
 import http from "http";
 import { Server as WebSocketServer } from "socket.io";
@@ -16,7 +17,7 @@ const startServer = async (): Promise<void> => {
   try {
     await dbConnect();
     server.listen(port, () => {
-      console.log(`Server is running on port ${port}`);
+      console.log(colors.red(`Server is running on port ${port}`));
     });
   } catch (error) {
     console.log(error);
