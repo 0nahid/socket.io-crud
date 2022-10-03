@@ -7,7 +7,8 @@ const app: Application = express();
 /* middleware  */
 app.use(cors());
 app.use(express.json());
-app.use('/uploads', express.static('uploads'));
+app.use("/uploads", express.static("uploads"));
+app.set('view engine', 'ejs');
 
 /* here will be all the imports routes */
 
@@ -15,7 +16,7 @@ import userRoute from "./Routes/userRouter";
 
 /* here will be the all the routes */
 app.get("/", (req: Request, res: Response) => {
-  res.sendFile(path.join(__dirname, "../public/index.html"));
+  res.render("../public/index.ejs");
 });
 
 /* Here is the User Routes */
