@@ -10,12 +10,15 @@ app.use(express.json());
 
 /* here will be all the imports routes */
 
+import userRoute from "./Routes/userRouter";
+
 /* here will be the all the routes */
 app.get("/", (req: Request, res: Response) => {
   res.sendFile(path.join(__dirname, "../public/index.html"));
 });
 
 /* Here is the User Routes */
+app.use("/api/v1/users", userRoute);
 
 // 404 response
 app.all("*", (req: Request, res: Response) => {
